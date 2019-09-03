@@ -2,12 +2,13 @@
 
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
+import Appnavigator from './components/Navigator/Appnavigator';
 
 export default class App extends Component {
   render() {
     return (
       <View>
-          <Text> App </Text>
+          <Appnavigator />
       </View>
     );
   }
