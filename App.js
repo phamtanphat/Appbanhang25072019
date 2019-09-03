@@ -7,10 +7,9 @@ import Appnavigator from './components/Navigator/Appnavigator';
 export default class App extends Component {
   render() {
     return (
-      <View>
-          <Appnavigator />
+      <View style={{ flex: 1 }}>
+        <Appnavigator />
       </View>
     );
   }
 }
-
