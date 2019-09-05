@@ -11,3 +11,4 @@ export default class Shop extends PureComponent {
     );
   }
 }
+// https://github.com/ptomasroos/react-native-tab-navigator
