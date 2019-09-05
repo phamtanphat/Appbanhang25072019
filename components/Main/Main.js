@@ -25,15 +25,15 @@ export default class Main extends PureComponent {
   //   <Text>Go to ChangeInfo</Text>
   // </TouchableOpacity>
   closeControlPanel = () => {
-    this._drawer.close()
+    this.drawer.close()
   };
   openControlPanel = () => {
-    this._drawer.open()
+    this.drawer.open()
   };
   render() {
     return (
       <Drawer
-        ref={(ref) => this._drawer = ref}
+        ref={ref => { this.drawer = ref; }}
         content={<Menu closeMenu={this.closeControlPanel.bind(this)} />}
         openDrawerOffset={0.5}
         tapToClose
