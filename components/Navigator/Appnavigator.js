@@ -1,5 +1,6 @@
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
+import { fromLeft } from 'react-navigation-transitions';
 
 import Authentication from '../Authentication/Authentication';
 import OrderHistory from '../OrderHistory/OrderHistory';
@@ -14,7 +15,8 @@ const Appnavigator = createStackNavigator(
     Main: { screen: Main }
   },
   { initialRouteName: 'Main',
-    headerMode: 'none'
+    headerMode: 'none',
+    transitionConfig: () => fromLeft(1000)
   }
 );
 

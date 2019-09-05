@@ -1,11 +1,13 @@
 import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TouchableOpacity } from 'react-native';
 
 export default class Shop extends PureComponent {
   render() {
     return (
-      <View>
-        <Text style={{ backgroundColor: 'cadetblue' }}> Shop </Text>
+      <View style={{ flex: 1, backgroundColor: 'gray' }}>
+        <TouchableOpacity onPress={this.props.openMenu}>
+          <Text style={{ backgroundColor: 'cadetblue' }}> Shop </Text>
+        </TouchableOpacity>
       </View>
     );
   }
