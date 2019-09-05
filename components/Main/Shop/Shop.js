@@ -5,7 +5,7 @@ import Home from './Home/Home';
 import Cart from './Cart/Cart';
 import Search from './Search/Search';
 import Contact from './Contact/Contact';
-
+import Header from './Header';
 
 import icHomeSelect from '../../../media/appIcon/home0.png';
 import icHomeSelected from '../../../media/appIcon/home.png';
@@ -15,7 +15,6 @@ import icSearchSelect from '../../../media/appIcon/search0.png';
 import icSearchSelected from '../../../media/appIcon/search.png';
 import icContactSelect from '../../../media/appIcon/contact0.png';
 import icContactSelected from '../../../media/appIcon/contact0.png';
-
 
 const Screenheight = Dimensions.get('window').height;
 
@@ -28,6 +27,10 @@ export default class Shop extends PureComponent {
     const { iconStyle } = styles;
     return (
       <View style={{ flex: 1 }}>
+        <View style={{ height: Screenheight * 0.15 }}>
+          <Header />
+        </View>
+
         <TabNavigator>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'Home'}
@@ -57,26 +60,30 @@ export default class Shop extends PureComponent {
           <TabNavigator.Item
             selected={this.state.selectedTab === 'Search'}
             title="Search"
-            renderIcon={() => <Image source={icSearchSelect} style={iconStyle} />}
+            renderIcon={() => (
+              <Image source={icSearchSelect} style={iconStyle} />
+            )}
             selectedTitleStyle={{ color: '#34B089', fontFamily: 'Avenir' }}
             renderSelectedIcon={() => (
               <Image source={icSearchSelected} style={iconStyle} />
             )}
             onPress={() => this.setState({ selectedTab: 'Search' })}
           >
-            <Home />
+            <Search />
           </TabNavigator.Item>
           <TabNavigator.Item
             selected={this.state.selectedTab === 'Contact'}
             title="Contact"
-            renderIcon={() => <Image source={icContactSelect} style={iconStyle} />}
+            renderIcon={() => (
+              <Image source={icContactSelect} style={iconStyle} />
+            )}
             selectedTitleStyle={{ color: '#34B089', fontFamily: 'Avenir' }}
             renderSelectedIcon={() => (
               <Image source={icContactSelected} style={iconStyle} />
             )}
             onPress={() => this.setState({ selectedTab: 'Contact' })}
           >
-            <Home />
+            <Contact />
           </TabNavigator.Item>
         </TabNavigator>
       </View>
