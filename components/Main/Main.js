@@ -25,10 +25,10 @@ export default class Main extends PureComponent {
   //   <Text>Go to ChangeInfo</Text>
   // </TouchableOpacity>
   closeControlPanel = () => {
-    this.drawer.close()
+    this.drawer.close();
   };
   openControlPanel = () => {
-    this.drawer.open()
+    this.drawer.open();
   };
   render() {
     return (
