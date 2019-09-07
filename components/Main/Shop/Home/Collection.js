@@ -11,8 +11,10 @@ export default class Collection extends PureComponent {
                 <View style={{ flex: 1, justifyContent: 'center' }}>
                     <Text style={textStyle}> SPRING COLLECTION </Text>
                 </View>
-                <View style={{ flex: 4 }}>
-                    <Image source={bannerImage} style={imageStyle} />
+                <View style={{ flex: 4, width: Screenapp.width }}>
+                    <View style={{ flex: 1 }}>
+                        <Image source={bannerImage} style={imageStyle} />
+                    </View>
                 </View>
             </View>
         );
@@ -20,7 +22,7 @@ export default class Collection extends PureComponent {
 }
 const styles = StyleSheet.create({
     wrapper: {
-        height: Screenapp.height * 0.4,
+        height: Screenapp.height * 0.3,
         backgroundColor: '#fff',
         margin: Screenapp.height * 0.01,
         shadowColor: '#2E272B',
@@ -28,14 +30,16 @@ const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         elevation: 8,
         padding: Screenapp.height * 0.01,
-        paddingTop: 0
+        paddingTop: 0,
     },
     textStyle: {
         color: '#AFAEAF',
         fontSize: Screenapp.height * 0.03
     },
     imageStyle: {
-        height: '100%',
-        width: '100%'
+        height: null,
+        width: null,
+        flex: 1,
+        resizeMode: 'contain'
     }
 });
