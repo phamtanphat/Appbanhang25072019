@@ -20,7 +20,6 @@ export default class Header extends PureComponent {
           <TextInput
             style={textInputStyle} 
             placeholder="What do you want to buy?"
-
           />
         </View>
         <View />
@@ -33,11 +32,13 @@ const styles = StyleSheet.create({
     container: {
         backgroundColor: '#34B089', 
         flex: 1,
+        justifyContent: 'space-between',
         padding: Screenapp.width * 0.02
     },
     row1: {
         flexDirection: 'row',
-        justifyContent: 'space-between'
+        justifyContent: 'space-between',
+        alignItems: 'center'
     },
     imageStyle: {
         width: Screenapp.width * 0.08,
@@ -51,6 +52,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         paddingTop: 0,
         paddingBottom: 0
+    },
+    textStyle: {
+        color: '#fff',
+        fontSize: Screenapp.width * 0.05,
+        fontFamily: 'Avenir'
     }
 
 });
