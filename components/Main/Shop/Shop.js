@@ -1,4 +1,4 @@
-/* eslint-disable import/no-duplicates */
+/* eslint-disable no-duplicate-imports */
 import React, { PureComponent } from 'react';
 import { View, Image, StyleSheet, Dimensions } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
@@ -15,7 +15,7 @@ import icCartSelected from '../../../media/appIcon/cart.png';
 import icSearchSelect from '../../../media/appIcon/search0.png';
 import icSearchSelected from '../../../media/appIcon/search.png';
 import icContactSelect from '../../../media/appIcon/contact0.png';
-import icContactSelected from '../../../media/appIcon/contact0.png';
+import icContactSelected from '../../../media/appIcon/contact.png';
 
 const Screenheight = Dimensions.get('window').height;
 
