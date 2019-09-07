@@ -4,13 +4,12 @@ import Collection from './Collection';
 import Category from './Category';
 import Topproduct from './Topproduct';
 
-export default class Homeview extends PureComponent {
+export default class Home extends PureComponent {
     render() {
         return (
             <ScrollView style={{ flex: 1, backgroundColor: '#DBDBD8' }}>
                 <Collection />
-                <Category />
-                <Topproduct />
+
 
             </ScrollView>
         );
