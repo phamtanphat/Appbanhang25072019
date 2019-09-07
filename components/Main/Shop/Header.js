@@ -10,7 +10,9 @@ export default class Header extends PureComponent {
     return (
       <View style={container}>
         <View style={row1}>
-            <TouchableOpacity>
+            <TouchableOpacity
+              onPress={this.props.openMenu}
+            >
                 <Image source={icMenu} style={imageStyle} />
             </TouchableOpacity>
             <Text style={textStyle}>Wearing a Dress</Text>
@@ -49,6 +51,7 @@ const styles = StyleSheet.create({
     },
     textInputStyle: {
         flex: 1,
+        paddingLeft: Screenapp.width * 0.04,
         backgroundColor: '#fff',
         paddingTop: 0,
         paddingBottom: 0

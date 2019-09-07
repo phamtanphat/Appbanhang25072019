@@ -1,3 +1,4 @@
+/* eslint-disable import/no-duplicates */
 import React, { PureComponent } from 'react';
 import { View, Image, StyleSheet, Dimensions } from 'react-native';
 import TabNavigator from 'react-native-tab-navigator';
@@ -28,7 +29,7 @@ export default class Shop extends PureComponent {
     return (
       <View style={{ flex: 1 }}>
         <View style={{ height: Screenheight * 0.15 }}>
-          <Header />
+          <Header openMenu={this.props.openMenu.bind(this)} />
         </View>
 
         <TabNavigator>
