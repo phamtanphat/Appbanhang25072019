@@ -1,11 +1,14 @@
+/* eslint-disable max-len */
 import React, { PureComponent } from 'react';
 import { Text, View, ImageBackground, StyleSheet, TouchableOpacity } from 'react-native';
 import Swiper from 'react-native-swiper';
 import Screenapp from '../../../Unit/Screenapp';
+import Api from '../../../Unit/Api';
 
 import littleIcon from '../../../../media/temp/little.jpg';
 import maxiIcon from '../../../../media/temp/maxi.jpg';
 import partyIcon from '../../../../media/temp/party.jpg';
+
 
 export default class Category extends PureComponent {
     render() {
@@ -22,27 +25,16 @@ export default class Category extends PureComponent {
                         width={imageStyle.width}
                         height={imageStyle.height}
                     >
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('ListProduct')}
-                        >
-                            <ImageBackground source={littleIcon} style={imageStyle} >
-                                <Text style={cateTitle}>Maxi dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('ListProduct')}
-                        >
-                            <ImageBackground source={maxiIcon} style={imageStyle} >
-                                <Text style={cateTitle}>Maxi dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>
-                        <TouchableOpacity
-                            onPress={() => this.props.navigation.navigate('ListProduct')}
-                        >
-                            <ImageBackground source={partyIcon} style={imageStyle} >
-                                <Text style={cateTitle}>Maxi dress</Text>
-                            </ImageBackground>
-                        </TouchableOpacity>   
+                        {categoryTypes.map(type => (
+                            <TouchableOpacity
+                                key={type.id}
+                                onPress={() => this.props.navigation.navigate('ListProduct')}
+                            >
+                                <ImageBackground source={{ uri: `${Api}api/images/type/${type.image}` }} style={imageStyle} >
+                                    <Text style={cateTitle}>{type.name}</Text>
+                                </ImageBackground>
+                            </TouchableOpacity>
+                        ))} 
                     </Swiper>
                 </View>
 
