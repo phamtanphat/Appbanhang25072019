@@ -1,65 +1,56 @@
 import React, { PureComponent } from 'react';
-import { Text, View, TouchableOpacity, Image, StyleSheet, TextInput } from 'react-native';
-import icMenu from '../../../media/appIcon/ic_menu.png';
-import icLogo from '../../../media/appIcon/ic_logo.png';
-import Screenapp from '../../Unit/Screenapp';
+// eslint-disable-next-line max-len
+import { Text, View, TouchableOpacity, Dimensions, Image, TextInput, StyleSheet } from 'react-native';
 
+import icLogo from '../../../media/appIcon/ic_logo.png';
+import icMenu from '../../../media/appIcon/ic_menu.png';
+
+const { height } = Dimensions.get('window');
 export default class Header extends PureComponent {
-  render() {
-    const { container, row1, imageStyle, textStyle, row2, textInputStyle } = styles;
-    return (
-      <View style={container}>
-        <View style={row1}>
-            <TouchableOpacity
-              onPress={this.props.openMenu}
-            >
-                <Image source={icMenu} style={imageStyle} />
-            </TouchableOpacity>
-            <Text style={textStyle}>Wearing a Dress</Text>
-            <Image source={icLogo} style={imageStyle} />
-        </View>
-        <View style={row2} >
-          <TextInput
-            style={textInputStyle} 
-            placeholder="What do you want to buy?"
-          />
-        </View>
-        <View />
-      </View>
-    );
-  }
+    render() {
+        const { wrapper, row1, textInput, iconStyle, titleStyle } = styles;
+        return (
+            <View style={wrapper}>
+                <View style={row1}>
+                    <TouchableOpacity onPress={this.props.onOpenMenu}>
+                        <Image source={icMenu} style={iconStyle} />
+                    </TouchableOpacity>
+                    <Text style={titleStyle}>Wearing a Dress</Text>
+                    <Image source={icLogo} style={iconStyle} />
+                </View>
+                <TextInput
+                    style={textInput}
+                    placeholder="What do you want to buy?"
+                />
+            </View>
+        );
+    }
 }
 
 const styles = StyleSheet.create({
-    container: {
-        backgroundColor: '#34B089', 
-        flex: 1,
-        justifyContent: 'space-between',
-        padding: Screenapp.width * 0.02
+    wrapper: {
+        height: height / 8,
+        backgroundColor: '#34B089',
+        padding: height / 90
     },
     row1: {
         flexDirection: 'row',
-        justifyContent: 'space-between',
-        alignItems: 'center'
+        justifyContent: 'space-between'
     },
-    imageStyle: {
-        width: Screenapp.width * 0.08,
-        height: Screenapp.height * 0.05
-    },
-    row2: {
-        height: Screenapp.height * 0.05
-    },
-    textInputStyle: {
-        flex: 1,
-        paddingLeft: Screenapp.width * 0.04,
+    textInput: {
+        height: height / 23,
         backgroundColor: '#fff',
-        paddingTop: 0,
-        paddingBottom: 0
+        paddingLeft: height / 80,
+        marginTop: height / 100,
+        paddingVertical: 0
     },
-    textStyle: {
+    iconStyle: {
+        width: height / 23,
+        height: height / 23
+    },
+    titleStyle: {
         color: '#fff',
-        fontSize: Screenapp.width * 0.05,
-        fontFamily: 'Avenir'
+        fontFamily: 'Avenir',
+        fontSize: height / 30
     }
-
 });

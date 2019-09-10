@@ -1,14 +1,14 @@
-/* eslint-disable no-unused-vars */
-
+/* eslint-disable no-multi-spaces */
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, SafeAreaView } from 'react-native';
-import Appnavigator from './components/Navigator/Appnavigator';
+import { StatusBar, SafeAreaView } from 'react-native';
+import AppNavigator from './components/Navigation/AppNavigator';
 
+StatusBar.setHidden(true);
 export default class App extends Component {
   render() {
     return (
       <SafeAreaView style={{ flex: 1 }}>
-        <Appnavigator />
+        <AppNavigator />
       </SafeAreaView>
     );
   }

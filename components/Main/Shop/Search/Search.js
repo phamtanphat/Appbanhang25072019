@@ -1,12 +1,19 @@
-import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import { fromLeft } from 'react-navigation-transitions';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import Searchview from './Searchview';
+import ProductDetail from '../ProductDetail/ProductDetail';
 
-export default class Search extends PureComponent {
-  render() {
-    return (
-      <View>
-        <Text style={{ backgroundColor: 'chocolate' }}> Search </Text>
-      </View>
-    );
-  }
-}
+
+const StackNavigator = createStackNavigator({
+    Searchview: { screen: Searchview },
+    ProductDetail: { screen: ProductDetail }
+}, {
+        initialRouteName: 'Searchview',
+        transitionConfig: () => fromLeft(1000),
+        headerMode: 'none'
+});
+
+
+export default createAppContainer(StackNavigator);

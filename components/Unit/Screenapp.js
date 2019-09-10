@@ -1,5 +1,5 @@
-/* eslint-disable import/newline-after-import */
+/* eslint-disable max-len */
 import { Dimensions } from 'react-native';
-const Screenapp = Dimensions.get('window');
-export default Screenapp;
 
+const Screenapp = { width: Dimensions.get('window').width, height: Dimensions.get('window').height };
+export default Screenapp;

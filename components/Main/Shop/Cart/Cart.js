@@ -1,12 +1,18 @@
-import React, { PureComponent } from 'react';
-import { Text, View } from 'react-native';
+/* eslint-disable no-undef */
+/* eslint-disable no-unused-vars */
+import { fromLeft } from 'react-navigation-transitions';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
+import Cartview from './Cartview';
+import ProductDetail from '../ProductDetail/ProductDetail';
 
-export default class Cart extends PureComponent {
-  render() {
-    return (
-      <View>
-        <Text style={{ backgroundColor: 'chocolate' }}> Cart </Text>
-      </View>
-    );
-  }
-}
+const StackNavigator = createStackNavigator({
+    Cartview: { screen: Cartview },
+    ProductDetail: { screen: ProductDetail }
+}, {
+        initialRouteName: 'Cartview',
+        transitionConfig: () => fromLeft(1000),
+        headerMode: 'none'
+});
+
+
+export default createAppContainer(StackNavigator);
