@@ -5,15 +5,10 @@ import Swiper from 'react-native-swiper';
 import Screenapp from '../../../Unit/Screenapp';
 import Api from '../../../Unit/Api';
 
-import littleIcon from '../../../../media/temp/little.jpg';
-import maxiIcon from '../../../../media/temp/maxi.jpg';
-import partyIcon from '../../../../media/temp/party.jpg';
-
-
 export default class Category extends PureComponent {
     render() {
         const { wrapper, textStyle, imageStyle, cateTitle } = styles;
-        const {categoryTypes} = this.props;
+        const { categoryTypes } = this.props;
         return (
             <View style={wrapper}>
                 <View style={{ flex: 1, justifyContent: 'center' }}>

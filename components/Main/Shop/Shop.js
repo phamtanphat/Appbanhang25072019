@@ -26,7 +26,8 @@ export default class Shop extends PureComponent {
         super(props);
         this.state = {
             selectedTab: 'Home',
-            categoryTypes: []
+            categoryTypes: [],
+            topProducts: []
         };
     }
     componentDidMount() {
@@ -34,7 +35,7 @@ export default class Shop extends PureComponent {
         fetch(Url)
         .then(response => response.json())
         .then(resJSON => {
-            this.setState({ categoryTypes: resJSON.type });
+            this.setState({ categoryTypes: resJSON.type, topProducts: resJSON.product });
         });
     }
     openMenu() {
@@ -43,7 +44,7 @@ export default class Shop extends PureComponent {
     }
     render() {
         const { iconStyle } = styles;
-        const { categoryTypes } = this.state;
+        const { categoryTypes, topProducts } = this.state;
         return (
             <View style={{ flex: 1 }}>
                 <Header onOpenMenu={this.openMenu.bind(this)} />
@@ -56,7 +57,7 @@ export default class Shop extends PureComponent {
                         selectedTitleStyle={{ color: '#34B089', fontFamily: 'Avenir' }}
                         onPress={() => this.setState({ selectedTab: 'Home' })}
                     >
-                        <Home categoryTypes={categoryTypes} />
+                        <Home categoryTypes={categoryTypes} topProducts={topProducts} />
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'Cart'}
