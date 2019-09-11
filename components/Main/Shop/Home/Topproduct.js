@@ -1,64 +1,43 @@
+/* eslint-disable max-len */
 import React, { PureComponent } from 'react';
-import { Text, View, StyleSheet, Image, TouchableOpacity } from 'react-native';
+import { Text, View, StyleSheet, Image, TouchableOpacity, FlatList } from 'react-native';
 import Screenapp from '../../../Unit/Screenapp';
-
-import sp1 from '../../../../media/temp/sp1.jpeg';
-import sp2 from '../../../../media/temp/sp2.jpeg';
-import sp3 from '../../../../media/temp/sp3.jpeg';
-import sp4 from '../../../../media/temp/sp4.jpeg';
+import Api from '../../../Unit/Api';
 
 export default class Topproduct extends PureComponent {
     constructor(props) {
         super(props); 
         this.navigateDetail = this.navigateDetail.bind(this);
     }
-    navigateDetail() {
-        this.props.navigation.navigate('ProductDetail');
+    navigateDetail(productItem) {
+        this.props.navigation.navigate('ProductDetail', { productItem });
     }
     render() {
         const { container, titleContainer, title, body, 
             productContainer, productImage, productName, productPrice } = styles;
+        const  { topProducts } = this.props;
         return (
             <View style={container}>
                 <View style={titleContainer}>
                     <Text style={title}>TOP PRODUCT</Text>
                 </View>
-                <View style={body} >
-                    <TouchableOpacity 
-                        onPress={this.navigateDetail}
-                        style={productContainer}
-                    >
-                        <Image source={sp1} style={productImage} />
-                        <Text style={productName}>PRODUCT NAME</Text>
-                        <Text style={productPrice}>400$</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        onPress={this.navigateDetail}
-                        style={productContainer}
-                    >
-                        <Image source={sp2} style={productImage} />
-                        <Text style={productName}>PRODUCT NAME</Text>
-                        <Text style={productPrice}>200$</Text>
-                    </TouchableOpacity>
-                    <View style={{ height: Screenapp.width * 0.03, width: Screenapp.width }} />
-                    <TouchableOpacity 
-                        onPress={this.navigateDetail}
-                        style={productContainer}
-                    >
-                        <Image source={sp3} style={productImage} />
-                        <Text style={productName}>PRODUCT NAME</Text>
-                        <Text style={productPrice}>300$</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity 
-                        onPress={this.navigateDetail} 
-                        style={productContainer}
-                    >
-                        <Image source={sp4} style={productImage} />
-                        <Text style={productName}>PRODUCT NAME</Text>
-                        <Text style={productPrice}>500$</Text>
-                    </TouchableOpacity>
+                    <FlatList 
+                        contentContainerStyle={body}
+                        data={topProducts}
+                        keyExtractor={item => item.id}
+                        numColumns={2}
+                        renderItem={({ item }) => (
+                            <TouchableOpacity 
+                                onPress={() => this.navigateDetail(item)}
+                                style={productContainer}
+                            >
+                                <Image source={{ uri: `${Api}api/images/product/${item.images[0]}` }} style={productImage} />
+                                <Text style={productName}>{item.name.toUpperCase()}</Text>
+                                <Text style={productPrice}>{item.price}$</Text>
+                            </TouchableOpacity>
+                        )}
+                    />
                 </View>
-            </View>
         );
     }
 }
@@ -81,12 +60,12 @@ const styles = StyleSheet.create({
         fontSize: Screenapp.height * 0.03
     },
     body: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
-        flexWrap: 'wrap',
+        alignItems: 'center',
+        flex: 1,
         paddingBottom: Screenapp.height * 0.01
     },
     productContainer: {
+        margin: Screenapp.width * 0.02,
         width: Screenapp.width * 0.43,
         backgroundColor: '#fff',
         shadowColor: '#2E272B',

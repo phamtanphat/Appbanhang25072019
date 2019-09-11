@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 /* eslint-disable no-undef */
 import React, { PureComponent } from 'react';
 import { View, Image, StyleSheet, Dimensions } from 'react-native';
@@ -8,6 +9,7 @@ import Home from './Home/Home';
 import Search from './Search/Search';
 import Header from './Header';
 import Api from '../../Unit/Api';
+import CartsProduct from '../../Unit/CartsProduct';
 
 import homeIconS from '../../../media/appIcon/home.png';
 import homeIcon from '../../../media/appIcon/home0.png';
@@ -27,8 +29,10 @@ export default class Shop extends PureComponent {
         this.state = {
             selectedTab: 'Home',
             categoryTypes: [],
-            topProducts: []
+            topProducts: [],
+            cartArray: [1,2,3]
         };
+        CartsProduct.addProductToCart = this.addProductToCart.bind(this);
     }
     componentDidMount() {
         const Url = `${Api}api/`;
@@ -38,13 +42,17 @@ export default class Shop extends PureComponent {
             this.setState({ categoryTypes: resJSON.type, topProducts: resJSON.product });
         });
     }
+    
+    addProductToCart(product) {
+        this.setState({ cartArray: this.state.cartArray.concat(product) });
+    }
     openMenu() {
         const { open } = this.props;
         open();
     }
     render() {
         const { iconStyle } = styles;
-        const { categoryTypes, topProducts } = this.state;
+        const { categoryTypes, topProducts, cartArray } = this.state;
         return (
             <View style={{ flex: 1 }}>
                 <Header onOpenMenu={this.openMenu.bind(this)} />
@@ -64,11 +72,11 @@ export default class Shop extends PureComponent {
                         title="Cart"
                         renderIcon={() => <Image source={cartIcon} style={iconStyle} />}
                         renderSelectedIcon={() => <Image source={cartIconS} style={iconStyle} />}
-                        badgeText="1"
+                        badgeText={cartArray.length}
                         selectedTitleStyle={{ color: '#34B089', fontFamily: 'Avenir' }}
                         onPress={() => this.setState({ selectedTab: 'Cart' })}
                     >
-                        <Cart />
+                        <Cart cartArray={cartArray}/>
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'Search'}
