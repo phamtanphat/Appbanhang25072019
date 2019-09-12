@@ -26,26 +26,26 @@ class CartView extends Component {
                 <ScrollView style={main}>
                     {cartArray.map(item => (
                         <View
-                            key={item.id} 
+                            key={item.product.id} 
                             style={product} 
                         >
-                            <Image source={{ uri: `${Api}api/images/product/${item.images[0]}` }} style={productImage} />
+                            <Image source={{ uri: `${Api}api/images/product/${item.product.images[0]}` }} style={productImage} />
                             <View style={[mainRight]}>
                                 <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-                                    <Text style={txtName}>{toTitleCase(item.name)}</Text>
+                                    <Text style={txtName}>{toTitleCase(item.product.name)}</Text>
                                     <TouchableOpacity>
                                         <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
                                     </TouchableOpacity>
                             </View>
                             <View>
-                                <Text style={txtPrice}>{item.price}$</Text>
+                                <Text style={txtPrice}>{item.product.price}$</Text>
                             </View>
                             <View style={productController}>
                                 <View style={numberOfProduct}>
                                     <TouchableOpacity>
                                         <Text>+</Text>
                                     </TouchableOpacity>
-                                    <Text>{3}</Text>
+                                    <Text>{item.quantity}</Text>
                                     <TouchableOpacity>
                                         <Text>-</Text>
                                     </TouchableOpacity>
