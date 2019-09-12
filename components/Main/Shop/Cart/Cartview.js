@@ -4,8 +4,7 @@ import {
     View, Text, TouchableOpacity, ScrollView, 
     Dimensions, StyleSheet, Image 
 } from 'react-native';
-
-import sp1 from '../../../../media/temp/sp1.jpeg';
+import Api from '../../../Unit/Api';
 
 function toTitleCase(str) {
     return str.replace(/\w\S*/g, txt => txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase());
@@ -30,16 +29,16 @@ class CartView extends Component {
                             key={item.id} 
                             style={product} 
                         >
-                            <Image source={sp1} style={productImage} />
+                            <Image source={{ uri: `${Api}api/images/product/${item.images[0]}` }} style={productImage} />
                             <View style={[mainRight]}>
                                 <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
-                                    <Text style={txtName}>{toTitleCase('black of the')}</Text>
+                                    <Text style={txtName}>{toTitleCase(item.name)}</Text>
                                     <TouchableOpacity>
                                         <Text style={{ fontFamily: 'Avenir', color: '#969696' }}>X</Text>
                                     </TouchableOpacity>
                             </View>
                             <View>
-                                <Text style={txtPrice}>{100}$</Text>
+                                <Text style={txtPrice}>{item.price}$</Text>
                             </View>
                             <View style={productController}>
                                 <View style={numberOfProduct}>

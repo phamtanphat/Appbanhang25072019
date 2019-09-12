@@ -36,6 +36,7 @@ export default class Topproduct extends PureComponent {
                                 <Text style={productPrice}>{item.price}$</Text>
                             </TouchableOpacity>
                         )}
+                        ItemSeparatorComponent={() => <View style={{ height: 1, width: Screenapp.width }} />}
                     />
                 </View>
         );
@@ -61,6 +62,7 @@ const styles = StyleSheet.create({
     },
     body: {
         alignItems: 'center',
+        justifyContent: 'center',
         flex: 1,
         paddingBottom: Screenapp.height * 0.01
     },

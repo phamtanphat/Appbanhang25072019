@@ -30,7 +30,7 @@ export default class Shop extends PureComponent {
             selectedTab: 'Home',
             categoryTypes: [],
             topProducts: [],
-            cartArray: [1,2,3]
+            cartArray: []
         };
         CartsProduct.addProductToCart = this.addProductToCart.bind(this);
     }
@@ -76,7 +76,7 @@ export default class Shop extends PureComponent {
                         selectedTitleStyle={{ color: '#34B089', fontFamily: 'Avenir' }}
                         onPress={() => this.setState({ selectedTab: 'Cart' })}
                     >
-                        <Cart cartArray={cartArray}/>
+                        <Cart cartArray={cartArray} />
                     </TabNavigator.Item>
                     <TabNavigator.Item
                         selected={this.state.selectedTab === 'Search'}
